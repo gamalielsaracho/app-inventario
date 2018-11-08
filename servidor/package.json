@@ -5,14 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "bundle": "watchify public/src/app.js -o public/src/bundle.js -w"
+    "bundle": "watchify public/src/app.js -o public/src/bundle.js -t babelify",
+    "start": "nodemon --exec babel-node --presets env,stage-2 app.js"
   },
   "author": "gamaliel saracho",
   "license": "ISC",
   "dependencies": {
-    "babel": "^5.8.23",
+    "acorn": "^6.0.2",
     "body-parser": "^1.17.1",
     "browserify": "^16.2.3",
+    "datatables": "^1.10.18",
     "express": "^4.15.2",
     "jsonwebtoken": "^7.4.0",
     "moment": "^2.19.1",
@@ -21,5 +23,12 @@
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.1.1",
     "watchify": "^3.11.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1",
+    "babelify": "^8.0.0"
   }
 }

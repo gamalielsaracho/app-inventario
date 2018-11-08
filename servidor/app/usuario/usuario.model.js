@@ -36,7 +36,7 @@ exports.mostrar = function (datos, callback) {
 
 exports.verificarExistente = function (datos, callback) {
 	var q = `
-		SELECT * FROM usuarios WHERE alias_usuario = ?
+		SELECT * FROM usuarios WHERE alias_usuario = ? AND password_usuario=MD5(?)
 	`
 
 	var opciones = {
@@ -44,7 +44,7 @@ exports.verificarExistente = function (datos, callback) {
 		nestTables: false
 	}
 
-	return connection.query(opciones, [datos.alias_usuario], callback);
+	return connection.query(opciones, [datos.alias_usuario, datos.password_usuario], callback);
 
 	connection.end();
 }

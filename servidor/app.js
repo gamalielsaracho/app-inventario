@@ -25,15 +25,28 @@ app.get('/', (req, res) => {
 	res.sendfile('./index.html')
 })
 
-// app.get('/hola', (req, res) => {
-// 	res.sendfile('./index.html')
-// })
+app.get('/hola', (req, res) => {
+	res.sendfile('./index.html')
+})
 
+app.get('/entrar', (req, res) => {
+	res.sendfile('./index.html')
+})
+
+app.get('/dashboard', (req, res) => {
+	res.sendfile('./index.html')
+})
+
+app.get('/dashboard/usuarios', (req, res) => {
+	res.sendfile('./index.html')
+})
+
+import usuarioSockets from '././app/usuario/usuario.sockets'
 
 io.on('connection', function (socket) {
 	console.log('Un usuario Conectado.')
 	
-	require('././app/usuario/usuario.sockets')(socket, io)
+	usuarioSockets(socket, io)
 
 	socket.on('disconnect', function () {
 		console.log('El usuario se Desconecto.')
